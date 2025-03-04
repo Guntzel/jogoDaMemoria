@@ -1,5 +1,5 @@
 addEventListener("load", function(){
-
+//Cria uma função para embaralhar um Array
     Array.prototype.shuffle = function () {
         for (let index = this.length - 1; index > 0; index--) {
            let random = Math.floor(Math.random() * (index + 1));
@@ -8,34 +8,27 @@ addEventListener("load", function(){
            this[random] = aux;
         }
      };
-
+//Objeto que representa a carta
     function Card(card_id){
         this.number = card_id;
         this.element = null;
         this.trava = false;
     }
+//Método para renderizar a carta
     Card.prototype.render = function(){
         let game_div = document.getElementById("game");
-
-
-
+        
         let card_container = document.createElement("div");
         card_container.classList.add("card");
-        //card_container.classList.add("back");
-
+        
         let img = document.createElement("img");
         img.src = "imagens/"+parseInt(this.number+1)+".png";
         
-
-        let card_title = document.createElement("h1");
-        card_title.innerText = this.number;
-
-        //card_container.appendChild(card_title);
         card_container.appendChild(img);
         this.element = card_container;
         game_div.appendChild(card_container);
     }
-
+//Método para chegar se formou um par, travar o jogo para que o jogador não possa clicar em outras cartas durante a verificação.
     function check_pairs(){
         if(first.number == second.number){
             pairs++;
@@ -57,33 +50,29 @@ addEventListener("load", function(){
         }
         if(pairs == 6)
         {
-            alert("yey!");
+            alert("Você venceu!");
         }
     }
 
-    var lock_game = false;
+    var lock_game = false; //Controla se o jogo em geral está travado ou não
     var first = null;
     var second = null;
     var pairs = 0;
     var cards = [];
-    
+    //Inicia o vetor de cartas com dois valores íguais em cada repetição para formar os pares.
     for(let i = 0; i < 6; i++)
     {
         cards.push(new Card(i));
         cards.push(new Card(i));
     }
-
     cards.shuffle();
-    //cards.forEach(card => {
-    //    card.render();
-    //});   
-    
+ //Renderiza as cartas com um intervalo entre cara renderização   
     for (let index = 0; index < cards.length; index++) {
         this.setTimeout(function(){
             cards[index].render();
-        },100*index)
-        
+        },100*index)    
     }
+    //Após alguns segundos da carta ter sido renderizada, adiciona a classe "Back" e adiciona o evento de click.
     cards.forEach(card => {
         setTimeout(function(){
             card.element.classList.add("back");
@@ -100,8 +89,7 @@ addEventListener("load", function(){
                 }  
             }   
         })
-        }, 3000)
-        
+        }, 3000)  
     });  
 })
     
