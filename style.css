@@ -1,0 +1,51 @@
+body
+{
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+#game
+{
+    width: 80%;
+    height: 1vw;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+.card
+{
+    width: 20%;
+    height: 12vw;
+    background-color: red;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 1vw;
+    border-radius: 2vw;
+    border: 0.5vw solid rgb(0, 0, 0);
+    overflow: hidden;
+}
+.card>img
+{
+    width: 100%;
+}
+
+
+.back
+{
+    border: 0.5vw solid #474747;
+    background: rgb(117,50,3);
+    background: radial-gradient(circle, rgba(117,50,3,1) 18%, rgba(152,72,0,1) 35%, rgba(190,69,0,1) 100%);
+    & img{
+        display: none;
+    }
+}
+
+.back:hover
+{
+    box-shadow: 0.7vw 0.7vw rgba(142, 72, 255, 0.5);
+}
